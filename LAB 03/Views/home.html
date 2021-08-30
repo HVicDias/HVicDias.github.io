@@ -1,46 +1,48 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <script type="text/javascript" charset="utf-8" src="../Script/script.js"></script>
-    </head>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Calculadora simples modelo windows</title>
+  <link href="../Style/style.css" rel="stylesheet">
+  <script src="../Script/script.js" defer></script>
+</head>
+<body>
+  <div class="calculadora">
     
-    <body onload="onLoad()">
-        <form name="calc">
-            <input type="text" name="ultimo_resultado" readonly></input>
-            </br>
-            <input type="text" name="visor" readonly></input>
-            </br>
-            <input type="button" name="divisor" value="%" onclick="defineOperacao(value)"></input>
-            <input type="button" name="limpa entrada" value="CE" onclick="limpa()"></input>
-            <input type="button" name="limpa" value="C" onclick="limpa()"></input>
-            <input type="button" name="del" value="Del" onclick="onClick(value)"></input>
-            </br>
-            <input type="button" name="um por x" value="1/x" onclick="defineOperacao(value)"></input>
-            <input type="button" name="quadrado" value="x²" onclick="defineOperacao(value)"></input>
-            <input type="button" name="raiz quadrada" value="√x" onclick="defineOperacao(value)"></input>
-            <input type="button" name="divisao" value="/" onclick="defineOperacao(value)"></input>
-            </br>
-            <input type="button" name="7" value="7" onclick="onClick(value)"></input>
-            <input type="button" name="8" value="8" onclick="onClick(value)"></input>
-            <input type="button" name="9" value="9" onclick="onClick(value)"></input>
-            <input type="button" name="vezes" value="*" onclick="defineOperacao(value)"></input>
-            </br>
-            <input type="button" name="4" value="4" onclick="onClick(value)"></input>
-            <input type="button" name="5" value="5" onclick="onClick(value)"></input>
-            <input type="button" name="6" value="6" onclick="onClick(value)"></input>
-            <input type="button" name="menos" value="-" onclick="defineOperacao(value)"></input>
-            </br>
-            <input type="button" name="1" value="1" onclick="onClick(value)"></input>
-            <input type="button" name="2" value="2" onclick="onClick(value)"></input>
-            <input type="button" name="4" value="3" onclick="onClick(value)"></input>
-            <input type="button" name="+" value="+" onclick="defineOperacao(value)"></input>
-            </br>
-            <input type="button" name="+/-" value="+/-" onclick="defineOperacao(value)"></input>
-            <input type="button" name="0" value="0" onclick="onClick(value)"></input>
-            <input type="button" name="." value="." onclick="defineOperacao(value)"></input>
-            <input type="button" name="=" value="=" onclick="onClick(value)"></input>
+    <text readonly ultimo class="ocupa-quatro"></text>
+    <text readonly atual class="ocupa-quatro"></text>
+    
+    <button porcentagem>%</button>
+    <button clear>CE</button>
+    <button clear>C</button>
+    <button del>DEL</button>
 
-            
-        </form>
-    </body>
+    <button operacao>1/x</button>
+    <button operacao>x²</button>
+    <button operacao>√x</button>
+    <button operacao>÷</button>
+
+    <button numero>7</button>
+    <button numero>8</button>
+    <button numero>9</button>
+    <button operacao>x</button>
+
+    <button numero>4</button>
+    <button numero>5</button>
+    <button numero>6</button>
+    <button operacao>-</button>
+
+    <button numero>1</button>
+    <button numero>2</button>
+    <button numero>3</button>
+    <button operacao>+</button>
+
+    <button operacao>+/-</button>
+    <button numero>0</button>
+    <button numero>.</button>
+    <button igual>=</button>
+  </div>
+</body>
 </html>

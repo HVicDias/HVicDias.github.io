@@ -1,0 +1,27 @@
+body {
+    background-color: darkslategray;
+}
+  
+div.calculadora {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(80px, auto) repeat(8, 80px);
+  }
+  
+button {
+    cursor: pointer;
+    font-size: 1.2rem;
+    border: 3px transparent blue;
+    outline: none;
+    background-color: rgba(255, red, blue, .75);
+  }
+  
+text.ocupa-quatro {
+    grid-column: span 4;
+    background: gray;
+    font-size: 4rem;
+    text-align: right;
+  }
