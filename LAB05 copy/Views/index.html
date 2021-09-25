@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Meu estacionamento</title>
+  <link href="../Style/style.css" rel="stylesheet">
+  <script src="../Script/script.js" defer></script>
+</head>
+<body>
+    <div class="pai">
+        <div class="esquerda">
+            <form  autocomplete="off">
+                <div>
+                    <label>ID</label>
+                    <input type="text" name="ID" id="id">
+                </div>
+
+                <div>
+                    <label>PLACA</label>
+                    <input type="text" name="PLACA" id="placa">
+                </div>
+
+                <div>
+                    <label>MARCA</label>
+                    <input type="text" name="MARCA" id="marca">
+                </div>
+
+                <div>
+                    <label>COR</label>
+                    <input type="text" name="COR" id="cor">
+                </div>
+
+                <div>
+                    <label>NOME PROPRIETARIO</label>
+                    <input type="text" name="NOME_PROP" id="nome_prop">
+                </div>
+
+                <div  class="form-action-buttons">
+                    <input type="submit" value="Cadastrar Moto" onclick="event.preventDefault();onFormSubmit(this);">
+                </div>
+                <div  class="form-action-buttons">
+                    <input type="submit" value="Cadastrar Carro" onclick="event.preventDefault();onFormSubmit(this);">
+                </div>
+            </form>
+        </div>
+        <div class="direita">
+            <table class="list" id="veiculos">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOME</th>
+                        <th>PLACA</th>
+                        <th>HORA ENTRADA</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
