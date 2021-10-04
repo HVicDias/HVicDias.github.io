@@ -50,7 +50,11 @@ function JogoXadrez() {
 		if (this.posI == i && this.posJ == j)
 			return false;
 
-		return peca.mover(this.tabuleiro, i, j);
+		if(peca.mover(this.tabuleiro, i, j)){
+			peca.movimento(this.tabuleiro, i, j);
+			return true;
+		}
+		return false;
 	}
 
 	this.getTabuleiro = function() {
@@ -87,5 +91,20 @@ function JogoXadrez() {
 
 	this.getPeca = function(i, j) {
 		return this.tabuleiro.getPeca(i,j);
+	}
+
+	this.getRei = function() {
+		var tabuleiro = this.tabuleiro.getRepresentacao;
+		for(var i = 0; i < 8; i++) {
+            for(var j = 0; j < 8; j++)
+				if(tabuleiro[i][j] != 0){
+					if(this.vez == 0 && tabuleiro[i][j] == W_KING){
+						return this.tabuleiro.getPeca(i,j);
+					}
+					if(this.vez == 1 && tabuleiro[i][j] == B_KING){
+						return this.tabuleiro.getPeca(i,j);
+					}
+				}
+        }
 	}
 }
