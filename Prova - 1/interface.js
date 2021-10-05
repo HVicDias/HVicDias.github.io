@@ -30,6 +30,18 @@ function select(i,j) {
 		jogo.vez = !jogo.vez;
 
 		atualizar_jogo();
+		if(jogo.xeque){
+			if(jogo.verificaChequeMate()){
+				let vencedor;
+				if(this.vez != 0){
+					vencedor  = "brancas";
+				}else{
+					vencedor = "pretas";
+				}
+				alert("Cheque Mate Vitoria das "+ vencedor);
+				jogo.reiniciar();
+			}
+		}
 	} else {
 		alert("Movimento invalido!");
 	}
