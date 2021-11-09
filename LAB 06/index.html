@@ -1,22 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chrome Dino Replica</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    canvas {
-      display: block;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Banco</title>
 </head>
 <body>
-  <canvas id="game" width="400" height="400"></canvas>
-  <script src="script.js"></script>
+    <div class="grid-container">
+        <div class="grid-child">
+            <div class="flex">
+                <div class="element-center">
+                    <span class="wrap"></span>
+                    <h2>Cadastro</h2>
+
+                    <div id="inputs">
+                        <h2>
+                            ID
+                        </h2>
+                        <input type="text" id="idCadastro" required>
+                        <h2>
+                          Nome
+                        </h2>
+                        <input type="text" id="nomeCadastro" required>
+                        <h2>
+                            Deposito Inicial
+                        </h2>
+                        <input type="text" id="depositoCadastro" required>
+                        <button id="btnCadastro">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="grid-child">
+            <div class="flex">
+                <div class="element-center">
+                    <div id="saldo">
+                        <span class="wrap"></span>
+                        </a>
+                        <h2 id="id"></h2>
+                        <h2 id="usuario"></h2>
+                        <h2 id="saldoAtual"></h2>
+                    </div>
+              
+                    <div id="inputs">
+                        <h2>
+                            Deposito
+                        </h2>
+                        <input type="text" id="deposito" required>
+                        <button id="btnDeposito">Deposito</button>
+              
+                        <h2>
+                          Saque
+                        </h2>
+                        <input type="text" id="saque" required>
+                        <button id="btnSaque">Saque</button>
+
+                        <h2>
+                            Trocar Conta
+                        </h2>
+                        <input type="text" id="idTroca" required>
+                        <button id="btnTrocarConta">Trocar Conta</button>
+
+                        <h2>
+                            Transferir Valor
+                        </h2>
+                        <input type="text" id="valorTransfere" required>
+                        <h2>
+                            ID
+                        </h2>
+                        <input type="text" id="idTransfere" required>
+                        <button id="btnTransfere">Transferir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+    
+      
+    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
