@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //Variables start
     const tabelaUsuario = document.querySelector('.tabela-usuario')
     const tabelaOponente = document.querySelector('.tabela-oponente')
-    const ships = document.querySelectorAll('.ship')
+    
     const player = document.querySelector('#player')
     const conexao = document.querySelector('#player2Connection')
     const startBtn = document.querySelector('#comecar')
@@ -182,26 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    ships.forEach(ship => ship.addEventListener('dragstart', dragStart))
-
-    matrizUsuario.forEach(linha =>
-        linha.forEach(celula => celula.addEventListener('dragstart', dragStart)))
-
-    matrizUsuario.forEach(linha =>
-        linha.forEach(celula => celula.addEventListener('dragenter', dragEnter)))
-
-    matrizUsuario.forEach(linha =>
-        linha.forEach(celula => celula.addEventListener('drop', drop)))
-
-    matrizUsuario.forEach(linha =>
-        linha.forEach(celula => celula.addEventListener('dragend', dragEnd)))
-
-    matrizUsuario.forEach(linha =>
-        linha.forEach(celula => celula.addEventListener('dblclick', dblClick)))
-
-    matrizUsuario.forEach(linha =>
-        linha.forEach(celula => celula.addEventListener('dragover', dragOver)))
-
     startBtn.addEventListener('click', async  () => {
         startBtn.disabled = true
         navioAleatorioBtn.disabled = true
@@ -220,10 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         jogo()
     })
-    //events end
 
-
-    //drag and drop
     function criaTabuleiroUser() {
         for (let i = 0; i < 10; i++) {
             const linha = document.createElement('tr')
@@ -351,6 +328,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
+    
+
     shipsUser.forEach(ship => {
         generate(ship, matrizUsuario, shipsUser, true)
     })
@@ -370,6 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 k++
             })
         })
+        console.log(dblClickShip)
         validate = true
         if (dblClickShip.orientation == 'horizontal') {
 
@@ -461,21 +441,137 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function dragStart() {
+    
+    const ships = document.querySelectorAll('.ship')
+
+    ships.forEach(ship => ship.addEventListener('dragstart', dragStart))
+
+    matrizUsuario.forEach(linha =>
+        linha.forEach(celula => celula.addEventListener('dragstart', dragStart)))
+
+    matrizUsuario.forEach(linha =>
+        linha.forEach(celula => celula.addEventListener('dragenter', dragEnter)))
+
+    matrizUsuario.forEach(linha =>
+        linha.forEach(celula => celula.addEventListener('drop', drop)))
+
+    matrizUsuario.forEach(linha =>
+        linha.forEach(celula => celula.addEventListener('dragend', dragEnd)))
+
+    matrizUsuario.forEach(linha =>
+        linha.forEach(celula => celula.addEventListener('dblclick', dblClick)))
+
+    matrizUsuario.forEach(linha =>
+        linha.forEach(celula => celula.addEventListener('dragover', dragOver)))
+
+    function dblClick() {
         if (start) return
         let jAux = this.id % 10
         let iAux = (this.id - jAux) / 10
+
         let k = 0
 
         shipsUser.forEach(ship => {
             ship.position.forEach(coordenada => {
                 if (coordenada.x == iAux && coordenada.y == jAux) {
-                    currentShip = ship
+                    dblClickShip = ship
                 }
                 k++
             })
         })
+        console.log(dblClickShip)
+        validate = true
+        if (dblClickShip.orientation == 'horizontal') {
+
+            shipsUser.forEach(ship => {
+                for (let i = 1; i < dblClickShip.length; i++) {
+                    ship.position.forEach(coordenada => {
+                        if (coordenada.x == iAux + i && coordenada.y == jAux) {
+                            validate = false
+                        }
+                        if (iAux + i > 9) validate = false
+                    })
+                }
+            })
+        } else {
+
+            shipsUser.forEach(ship => {
+                for (let i = 1; i < dblClickShip.length; i++) {
+                    ship.position.forEach(coordenada => {
+                        if (coordenada.x == iAux && coordenada.y == jAux + i) {
+                            validate = false
+                        }
+                        if (jAux + i > 9) validate = false
+                    })
+                }
+            })
+        }
+        if (haveMask) {
+            celulaMapa.removeChild(shipMask)
+            haveMask = false
+        }
+
+
+
+        if (validate) {
+            shipsUser.forEach(ship => {
+                if (ship.name == dblClickShip.name) {
+                    ship.position.forEach(coordenada => {
+                        if (coordenada.x == iAux && coordenada.y == jAux) {
+                            if (ship.orientation == 'vertical') {
+                                ship.orientation = 'horizontal'
+                            } else {
+                                ship.orientation = 'vertical'
+                            }
+                        }
+                    })
+
+                }
+            })
+            let i = 0
+            dblClickShip.position.forEach(coordenada => {
+                matrizUsuario[coordenada.x][coordenada.y].removeChild(dblClickShip.ships[i])
+                i++
+            })
+            for (let j = 0; j < i; j++) {
+                dblClickShip.ships.pop()
+            }
+
+            if (dblClickShip.orientation == 'vertical') {
+                let i = 0
+                dblClickShip.position.forEach(coordenada => {
+
+                    let shipHtml = document.createElement('div')
+                    shipHtml.className = 'ship ' + dblClickShip.name
+                    shipHtml.id = dblClickShip.name
+                    shipHtml.draggable = 'true'
+                    matrizUsuario[iAux + i][jAux].append(shipHtml)
+                    dblClickShip.ships.push(shipHtml)
+
+                    coordenada.x = iAux + i
+                    coordenada.y = jAux
+                    i++
+                })
+            } else {
+                let i = 0
+                dblClickShip.position.forEach(coordenada => {
+
+                    let shipHtml = document.createElement('div')
+                    shipHtml.className = 'ship ' + dblClickShip.name
+                    shipHtml.id = dblClickShip.name
+                    shipHtml.draggable = 'true'
+                    matrizUsuario[iAux][jAux + i].append(shipHtml)
+                    dblClickShip.ships.push(shipHtml)
+
+                    coordenada.x = iAux
+                    coordenada.y = jAux + i
+                    i++
+                })
+            }
+        }
     }
+
+    
     function dragOver(e) {
         e.preventDefault()
     }
@@ -484,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault()
         if (start) return
 
-
+        
         if (jMask != this.id % 10 || iMask != (this.id - jMask) / 10) {
             if (haveMask) {
                 celulaMapa.removeChild(shipMask)
@@ -600,6 +696,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function dragStart() {
+        if (start) return
+        let jAux = this.id % 10
+        let iAux = (this.id - jAux) / 10
+        let k = 0
+
+        shipsUser.forEach(ship => {
+            ship.position.forEach(coordenada => {
+                if (coordenada.x == iAux && coordenada.y == jAux) {
+                    currentShip = ship
+                }
+                k++
+            })
+        })
+    }
     //drag and drop end
 
     //game logic
