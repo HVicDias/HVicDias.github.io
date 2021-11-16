@@ -659,7 +659,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     celula.removeChild(ship.ships[k])
                     coordenada.x = -1
                     coordenada.y = -1
-                    userPoints++
+                    opponentPoints++
                     let sinked = document.createElement('div')
                     sinked.className = 'sinked-ship'
                     matrizUsuario[iAtaque][jAtaque].append(sinked)
