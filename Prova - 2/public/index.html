@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalha Naval</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" charset="UTF-8"></script>
+    <script src="/socket.io/socket.io.js" charset="UTF-8"></script>
+</head>
+
+<body>
+    <div class="painelDeControle">
+        <h2 id="player"></h2>
+        <div id="player2Connection"></div>
+    </div>
+
+    <div class="jogo">
+        <div class="mapa usuario">
+            <table class="tabela-usuario">
+                <colgroup>
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                </colgroup>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="mapa oponente">
+            <table class="tabela-oponente">
+                <colgroup>
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                    <col width="45" />
+                </colgroup>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+    <div class="painelDeControle">
+        <button id="comecar">Começar o Jogo</button>
+        <button id="navioAleatorio">Navios Aleatorios</button>
+        <h2 id="vez">Sua vez</h2>
+        <div id="info"></div>
+    </div>
+</body>
+
+</html>
