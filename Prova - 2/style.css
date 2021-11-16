@@ -1,0 +1,108 @@
+.usuario {
+    width: 450px;
+    height: 530px;
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: royalblue;
+}
+
+.oponente {
+    width: 450px;
+    height: 530px;
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: royalblue;
+}
+
+.navios {
+    width: 315px;
+    height: 385px;
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: royalblue;
+}
+
+.jogo {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+table td {
+    border: 1px solid navy;
+    height: 45px;
+}
+
+.ship {
+    height: 35px;
+    display: flex;
+    width: 35px;
+    border: blue;
+}
+
+.one-one {
+    background-color: chocolate;
+}
+
+.one-two {
+    background-color: chocolate;
+}
+
+.one-three {
+    background-color: chocolate;
+}
+
+.one-four {
+    background-color: chocolate;
+}
+
+.four {
+    background-color: blueviolet;
+}
+
+.two-one {
+    background-color: cornflowerblue;
+}
+
+.two-two {
+    background-color: cyan;
+}
+
+.two-three {
+    background-color: darkkhaki;
+}
+
+.three-one {
+    background-color: darkslategrey;
+}
+
+.three-two {
+    background-color: deeppink;
+}
+
+.ship-mask {
+    height: 35px;
+    display: flex;
+    width: 35px;
+    background-color: lavender;
+    border-color: lightblue;
+}
+
+.ocean {
+    height: 35px;
+    display: flex;
+    width: 35px;
+    background-color: blue;
+    border-color: blue;
+}
+
+.sinked-ship {
+    height: 35px;
+    display: flex;
+    width: 35px;
+    background-color: red;
+    border-color: red;
+}
