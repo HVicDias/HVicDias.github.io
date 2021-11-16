@@ -313,6 +313,9 @@ document.addEventListener('DOMContentLoaded', () => {
     matrizUsuario.forEach(linha =>
         linha.forEach(celula => celula.addEventListener('dblclick', dblClick)))
 
+    matrizUsuario.forEach(linha =>
+        linha.forEach(celula => celula.addEventListener('dragover', dragOver)))
+
 
     let shipMask
     let celulaMapa
@@ -447,11 +450,15 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
     }
+    function dragOver(e) {
+        e.preventDefault()
+    }
 
     function dragEnter(e) {
+        e.preventDefault()
         if (start) return
 
-        e.preventDefault()
+        
         if (jMask != this.id % 10 || iMask != (this.id - jMask) / 10) {
             if (haveMask) {
                 celulaMapa.removeChild(shipMask)
@@ -578,10 +585,10 @@ document.addEventListener('DOMContentLoaded', () => {
     matrizOponente.forEach(linha =>
         linha.forEach(celula => celula.addEventListener('click', ataqueOponente)))
 
-    function ataqueOponente(){
-        if(!start || !vezUsuario || fimDeJogo) return
+    function ataqueOponente() {
+        if (!start || !vezUsuario || fimDeJogo) return
 
-        if(this.className === 'Atacado') return
+        if (this.className === 'Atacado') return
 
         celula = this
         celula.className = "Atacado"
@@ -589,9 +596,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let attackedShip
 
         jAtaque = this.id % 10
-        iAtaque = (this.id-jAtaque)/10
+        iAtaque = (this.id - jAtaque) / 10
 
- 
+
         shipsOponent.forEach(ship => {
             ship.position.forEach(coordenada => {
                 if (coordenada.x == iAtaque && coordenada.y == jAtaque) {
@@ -607,42 +614,42 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
 
-        if(!isShip){
+        if (!isShip) {
             let ocean = document.createElement('div')
             ocean.className = 'ocean'
             matrizOponente[iAtaque][jAtaque].append(ocean)
             vezUsuario = !vezUsuario
             info.innerHTML = 'tiro na agua'
-        }else{
+        } else {
             let sinked = true
-            attackedShip.position.forEach(coordenada =>{
-                if(coordenada.x != -1 || coordenada.y != -1) sinked = false
+            attackedShip.position.forEach(coordenada => {
+                if (coordenada.x != -1 || coordenada.y != -1) sinked = false
             })
 
-            if(sinked){
+            if (sinked) {
                 info.innerHTML = 'navio destruido'
-            }else{
+            } else {
                 info.innerHTML = 'parte de navio destruido'
             }
         }
         jogo()
     }
 
-    function ataqueUsuario(){
-        if(!start || vezUsuario || fimDeJogo) return
+    function ataqueUsuario() {
+        if (!start || vezUsuario || fimDeJogo) return
 
 
-        do{
+        do {
             iAtaque = Math.floor(Math.random() * 10)
             jAtaque = Math.floor(Math.random() * 10)
-            console.log(iAtaque+':'+jAtaque)
-        }while(matrizUsuario[iAtaque][jAtaque].className == 'Atacado');
+            console.log(iAtaque + ':' + jAtaque)
+        } while (matrizUsuario[iAtaque][jAtaque].className == 'Atacado');
 
         celula = matrizUsuario[iAtaque][jAtaque]
         celula.className = "Atacado"
         let isShip = false
         let attackedShip
- 
+
         shipsUser.forEach(ship => {
             let k = 0
             ship.position.forEach(coordenada => {
@@ -659,23 +666,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 k++
             })
-        }) 
+        })
 
-        if(!isShip){
+        if (!isShip) {
             let ocean = document.createElement('div')
             ocean.className = 'ocean'
             matrizUsuario[iAtaque][jAtaque].append(ocean)
             vezUsuario = !vezUsuario
             info.innerHTML = 'tiro na agua'
-        }else{
+        } else {
             let sinked = true
-            attackedShip.position.forEach(coordenada =>{
-                if(coordenada.x != -1 || coordenada.y != -1) sinked = false
+            attackedShip.position.forEach(coordenada => {
+                if (coordenada.x != -1 || coordenada.y != -1) sinked = false
             })
 
-            if(sinked){
+            if (sinked) {
                 info.innerHTML = 'navio destruido'
-            }else{
+            } else {
                 info.innerHTML = 'parte de navio destruido'
             }
         }
@@ -684,10 +691,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function jogo() {
-        if(userPoints == 20){
+        if (userPoints == 20) {
             fimDeJogo = true
             vez.innerHTML = 'Usuario ganhou a partida'
-        }if(opponentPoints == 20){
+        } if (opponentPoints == 20) {
             fimDeJogo = true
             vez.innerHTML = 'Oponente ganhou a partida'
         }
@@ -699,11 +706,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (!vezUsuario) {
             vez.innerHTML = 'Oponente'
-            setTimeout(ataqueUsuario,1000)
+            setTimeout(ataqueUsuario, 1000)
         }
     }
 
-    startBtn.addEventListener('click',  () =>{ 
+    startBtn.addEventListener('click', () => {
         startBtn.disabled = true
         start = true
         jogo()
